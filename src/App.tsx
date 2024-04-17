@@ -1,4 +1,4 @@
-import reactLogo from './assets/react.svg'
+// import reactLogo from './assets/react.svg'
 import badAxeLogo from './assets/badAxe.png'
 // import './App.css'
 import { Box, Stack, Typography } from '@mui/material'
