@@ -19,7 +19,7 @@ export const BUSINESS = {
   mapLinks: {
     google: 'https://maps.app.goo.gl/hkxKS6yX3zNggmPF9',
     apple:
-      'https://maps.apple.com/?address=RR+1+Box+3025,Dora,MO+65637&ll=36.6559,-92.2313&q=Bad+Axe+Farmstead',
+      'https://maps.apple.com/place?place-id=IF4693C9633C027B&address=County+Road+353%2C+Drury%2C+MO++65638%2C+United+States&coordinate=36.805157%2C-92.269330&name=Bad+Axe&_provider=9902',
   },
   social: {
     facebook: 'https://www.facebook.com/badaxe.britty',
