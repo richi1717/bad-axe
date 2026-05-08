@@ -18,7 +18,8 @@ export const BUSINESS = {
   },
   mapLinks: {
     google: 'https://maps.app.goo.gl/hkxKS6yX3zNggmPF9',
-    apple: 'https://maps.apple.com/p/cu_KXngP5XSGAE',
+    apple:
+      'https://maps.apple.com/?address=RR+1+Box+3025,Dora,MO+65637&ll=36.6559,-92.2313&q=Bad+Axe+Farmstead',
   },
   social: {
     facebook: 'https://www.facebook.com/badaxe.britty',
