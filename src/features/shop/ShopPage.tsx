@@ -222,6 +222,7 @@ const ShopPage = () => {
               variant="contained"
               startIcon={<PhoneIcon />}
               fullWidth
+              onClick={() => setSelected(null)}
             >
               Call Us
             </Button>
@@ -230,6 +231,7 @@ const ShopPage = () => {
               variant="outlined"
               startIcon={<SmsIcon />}
               fullWidth
+              onClick={() => setSelected(null)}
             >
               Send a Text
             </Button>
@@ -238,6 +240,7 @@ const ShopPage = () => {
               variant="outlined"
               startIcon={<EmailIcon />}
               fullWidth
+              onClick={() => setSelected(null)}
             >
               Send an Email
             </Button>
