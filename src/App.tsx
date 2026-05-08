@@ -1,24 +1,23 @@
-// import reactLogo from './assets/react.svg'
-import badAxeLogo from './assets/badAxe.png'
-// import './App.css'
-import { Box, Stack, Typography } from '@mui/material'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Layout from './components/Layout/Layout'
+import HomePage from './features/home/HomePage'
+import ShopPage from './features/shop/ShopPage'
+import LocationPage from './features/location/LocationPage'
+import ContactPage from './features/contact/ContactPage'
 
-function App() {
-  return (
-    <Stack
-      direction="column"
-      sx={{ width: '100vw' }}
-      alignItems="center"
-      spacing={2}
-    >
-      <Box>
-        <a href="https://react.dev" target="_blank">
-          <img src={badAxeLogo} className="logo react" alt="React logo" />
-        </a>
-      </Box>
-      <Typography variant="h1">Bad Axe coming soon!</Typography>
-    </Stack>
-  )
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'shop', element: <ShopPage /> },
+      { path: 'location', element: <LocationPage /> },
+      { path: 'contact', element: <ContactPage /> },
+    ],
+  },
+])
+
+const App = () => <RouterProvider router={router} />
 
 export default App
