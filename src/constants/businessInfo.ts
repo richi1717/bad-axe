@@ -18,7 +18,7 @@ export const BUSINESS = {
   },
   mapLinks: {
     google: 'https://maps.app.goo.gl/hkxKS6yX3zNggmPF9',
-    apple: 'https://maps.apple.com/p/-oer6eAazS2UVQ',
+    apple: 'https://maps.apple.com/p/cu_KXngP5XSGAE',
   },
   social: {
     facebook: 'https://www.facebook.com/badaxe.britty',
