@@ -15,7 +15,6 @@ import { BUSINESS } from '../../constants/businessInfo'
 const LocationPage = () => (
   <Container maxWidth="md" sx={{ py: { xs: 5, md: 8 } }}>
     <Stack direction="column" spacing={5}>
-      {/* Header */}
       <Stack direction="column" spacing={1}>
         <Typography variant="h2" sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}>
           Find Us
@@ -25,7 +24,6 @@ const LocationPage = () => (
         </Typography>
       </Stack>
 
-      {/* GPS warning */}
       <Paper
         variant="outlined"
         sx={{ p: 3, borderColor: 'warning.main', bgcolor: 'warning.main', opacity: 0.9, borderRadius: 2 }}
@@ -44,7 +42,6 @@ const LocationPage = () => (
         </Stack>
       </Paper>
 
-      {/* Map buttons */}
       <Stack direction="column" spacing={2}>
         <Typography variant="h5" sx={{ fontWeight: 600 }}>
           Open in Maps
@@ -84,7 +81,6 @@ const LocationPage = () => (
 
       <Divider />
 
-      {/* Details */}
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         spacing={4}

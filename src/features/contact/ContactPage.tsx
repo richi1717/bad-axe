@@ -50,7 +50,6 @@ const ContactPage = () => {
   return (
     <Container maxWidth="md" sx={{ py: { xs: 5, md: 8 } }}>
       <Stack direction="column" spacing={6}>
-        {/* Header */}
         <Stack direction="column" spacing={1}>
           <Typography variant="h2" sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}>
             Get in Touch
@@ -62,7 +61,6 @@ const ContactPage = () => {
         </Stack>
 
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
-          {/* Contact info */}
           <Stack direction="column" spacing={3} sx={{ flex: '0 0 auto', width: { md: 280 } }}>
             <Stack direction="column" spacing={0.5}>
               <Typography variant="subtitle2" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: '0.08em' }}>
@@ -97,7 +95,6 @@ const ContactPage = () => {
             <Divider sx={{ display: { md: 'none' } }} />
           </Stack>
 
-          {/* Contact form */}
           <Paper variant="outlined" sx={{ flex: 1, p: { xs: 3, md: 4 }, borderRadius: 2 }}>
             <form
               onSubmit={(e) => {

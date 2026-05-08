@@ -1,20 +1,29 @@
+import { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
+import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
 import Container from '@mui/material/Container'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
 import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import AgricultureIcon from '@mui/icons-material/Agriculture'
+import CloseIcon from '@mui/icons-material/Close'
 import EggIcon from '@mui/icons-material/Egg'
+import EmailIcon from '@mui/icons-material/Email'
 import GrassIcon from '@mui/icons-material/Grass'
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
 import PetsIcon from '@mui/icons-material/Pets'
 import PhoneIcon from '@mui/icons-material/Phone'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import SmsIcon from '@mui/icons-material/Sms'
 import SoapIcon from '@mui/icons-material/Soap'
 import type { Product } from '../../types'
 import { BUSINESS } from '../../constants/businessInfo'
@@ -81,115 +90,162 @@ const categoryIcon = (category: string) => {
   return <PetsIcon />
 }
 
-const ShopPage = () => (
-  <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
-    <Stack direction="column" spacing={6}>
-      {/* Header */}
-      <Stack
-        direction="column"
-        spacing={1.5}
-        sx={{ alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}
-      >
-        <Typography variant="h2" sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}>
-          What We Have
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 560 }}>
-          We are a small working farm — inventory changes with the seasons and the weather.
-          Give us a call or send a message before making the trip to check current availability.
-        </Typography>
-        <Button
-          href={BUSINESS.phoneHref}
-          variant="contained"
-          startIcon={<PhoneIcon />}
-          sx={{ mt: 1 }}
+const ShopPage = () => {
+  const [selected, setSelected] = useState<Product | null>(null)
+
+  return (
+    <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
+      <Stack direction="column" spacing={6}>
+        <Stack
+          direction="column"
+          spacing={1.5}
+          sx={{ alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}
         >
-          Call to Check Availability
-        </Button>
+          <Typography variant="h2" sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}>
+            What We Have
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 560 }}>
+            We are a small working farm — inventory changes with the seasons and the weather.
+            Give us a call or send a message before making the trip to check current availability.
+          </Typography>
+          <Button
+            href={BUSINESS.phoneHref}
+            variant="contained"
+            startIcon={<PhoneIcon />}
+            sx={{ mt: 1 }}
+          >
+            Call to Check Availability
+          </Button>
+        </Stack>
+
+        <Grid container spacing={3}>
+          {products.map((product) => (
+            <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }}>
+              <Card
+                variant="outlined"
+                sx={{
+                  height: '100%',
+                  opacity: product.available ? 1 : 0.6,
+                }}
+              >
+                <CardActionArea
+                  disabled={!product.available}
+                  onClick={() => setSelected(product)}
+                  sx={{ height: '100%', alignItems: 'flex-start' }}
+                >
+                  <CardContent>
+                    <Stack direction="column" spacing={2}>
+                      <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <Box sx={{ color: 'primary.main' }}>{categoryIcon(product.category)}</Box>
+                        <Chip
+                          label={product.available ? 'Available' : 'Coming Soon'}
+                          size="small"
+                          color={product.available ? 'success' : 'default'}
+                          variant="outlined"
+                        />
+                      </Stack>
+                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                        {product.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                        {product.description}
+                      </Typography>
+                    </Stack>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+
+        <Box
+          sx={{
+            bgcolor: 'primary.main',
+            borderRadius: 2,
+            p: { xs: 3, md: 4 },
+            textAlign: 'center',
+          }}
+        >
+          <Stack direction="column" spacing={2} sx={{ alignItems: 'center' }}>
+            <Typography
+              variant="h5"
+              sx={{ color: '#fff', fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}
+            >
+              Want to order or check what is ready?
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.85)', maxWidth: 500 }}>
+              We love hearing from folks who want to buy local. Call us or send a message and
+              we will get back to you.
+            </Typography>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Button
+                href={BUSINESS.phoneHref}
+                variant="contained"
+                startIcon={<PhoneIcon />}
+                sx={{ bgcolor: '#fff', color: 'primary.dark', '&:hover': { bgcolor: '#f0e8d8' } }}
+              >
+                {BUSINESS.phone}
+              </Button>
+              <Button
+                component={RouterLink}
+                to="/contact"
+                variant="outlined"
+                sx={{
+                  borderColor: '#fff',
+                  color: '#fff',
+                  '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.15)' },
+                }}
+              >
+                Send a Message
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
       </Stack>
 
-      {/* Product grid */}
-      <Grid container spacing={3}>
-        {products.map((product) => (
-          <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }}>
-            <Card
-              variant="outlined"
-              sx={{
-                height: '100%',
-                opacity: product.available ? 1 : 0.6,
-                transition: 'box-shadow 0.2s',
-                '&:hover': product.available ? { boxShadow: 4 } : {},
-              }}
-            >
-              <CardContent>
-                <Stack direction="column" spacing={2}>
-                  <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <Box sx={{ color: 'primary.main' }}>{categoryIcon(product.category)}</Box>
-                    <Chip
-                      label={product.available ? 'Available' : 'Coming Soon'}
-                      size="small"
-                      color={product.available ? 'success' : 'default'}
-                      variant="outlined"
-                    />
-                  </Stack>
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                    {product.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                    {product.description}
-                  </Typography>
-                </Stack>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* CTA banner */}
-      <Box
-        sx={{
-          bgcolor: 'primary.main',
-          borderRadius: 2,
-          p: { xs: 3, md: 4 },
-          textAlign: 'center',
-        }}
-      >
-        <Stack direction="column" spacing={2} sx={{ alignItems: 'center' }}>
-          <Typography
-            variant="h5"
-            sx={{ color: '#fff', fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}
-          >
-            Want to order or check what is ready?
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.85)', maxWidth: 500 }}>
-            We love hearing from folks who want to buy local. Call us or send a message and
-            we will get back to you.
-          </Typography>
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+      <Dialog open={!!selected} onClose={() => setSelected(null)} maxWidth="xs" fullWidth>
+        <DialogTitle>
+          <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            Interested in {selected?.name}?
+            <IconButton onClick={() => setSelected(null)} aria-label="close" size="small">
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </Stack>
+        </DialogTitle>
+        <DialogContent>
+          <Stack direction="column" spacing={2} sx={{ pt: 1 }}>
+            <Typography variant="body2" color="text.secondary">
+              Give us a call, send a text, or shoot us an email — we'll get back to you.
+            </Typography>
             <Button
               href={BUSINESS.phoneHref}
               variant="contained"
               startIcon={<PhoneIcon />}
-              sx={{ bgcolor: '#fff', color: 'primary.dark', '&:hover': { bgcolor: '#f0e8d8' } }}
+              fullWidth
             >
-              {BUSINESS.phone}
+              Call Us
             </Button>
             <Button
-              component={RouterLink}
-              to="/contact"
+              href={`sms:${BUSINESS.phoneHref.replace('tel:', '')}?body=Hi, I'm interested in ${selected?.name}.`}
               variant="outlined"
-              sx={{
-                borderColor: '#fff',
-                color: '#fff',
-                '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.15)' },
-              }}
+              startIcon={<SmsIcon />}
+              fullWidth
             >
-              Send a Message
+              Send a Text
+            </Button>
+            <Button
+              href={`mailto:${BUSINESS.email}?subject=Inquiry: ${selected?.name}&body=Hi, I'm interested in ${selected?.name}.`}
+              variant="outlined"
+              startIcon={<EmailIcon />}
+              fullWidth
+            >
+              Send an Email
             </Button>
           </Stack>
-        </Stack>
-      </Box>
-    </Stack>
-  </Container>
-)
+        </DialogContent>
+      </Dialog>
+    </Container>
+  )
+}
 
 export default ShopPage

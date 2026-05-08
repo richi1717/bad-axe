@@ -15,7 +15,6 @@ import { BUSINESS } from '../../constants/businessInfo'
 
 const HomePage = () => (
   <Stack direction="column">
-    {/* Hero */}
     <Box
       sx={{
         position: 'relative',
@@ -105,7 +104,6 @@ const HomePage = () => (
       </Stack>
     </Box>
 
-    {/* About section */}
     <Container maxWidth="md" sx={{ py: { xs: 6, md: 10 } }}>
       <Stack direction="column" spacing={3} sx={{ alignItems: 'center', textAlign: 'center' }}>
         <Typography

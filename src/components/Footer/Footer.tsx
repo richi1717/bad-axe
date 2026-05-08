@@ -39,7 +39,6 @@ const Footer = () => (
             {BUSINESS.address.full}
           </Typography>
 
-          {/* Social links — renders only when set */}
           <Stack direction="row" spacing={0.5} sx={{ pt: 0.5 }}>
             {BUSINESS.social.facebook && (
               <Tooltip title="Facebook">
