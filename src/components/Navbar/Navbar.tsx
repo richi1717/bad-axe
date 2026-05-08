@@ -46,7 +46,6 @@ export default function Navbar() {
             />
           </Box>
 
-          {/* Desktop nav links */}
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
@@ -88,7 +87,9 @@ export default function Navbar() {
 
           <Box sx={{ flexGrow: { xs: 1, md: 0 } }} />
 
-          <Tooltip title={`Switch to ${mode === 'dark' ? 'light' : 'dark'} mode`}>
+          <Tooltip
+            title={`Switch to ${mode === 'dark' ? 'light' : 'dark'} mode`}
+          >
             <IconButton onClick={toggleColorMode} color="inherit" size="medium">
               {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
             </IconButton>
@@ -105,15 +106,17 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      {/* Mobile drawer */}
       <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        PaperProps={{ sx: { width: 240 } }}
+        slotProps={{ paper: { sx: { width: 240 } } }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-          <IconButton onClick={() => setDrawerOpen(false)} aria-label="close menu">
+          <IconButton
+            onClick={() => setDrawerOpen(false)}
+            aria-label="close menu"
+          >
             <CloseIcon />
           </IconButton>
         </Box>
@@ -134,7 +137,7 @@ export default function Navbar() {
               >
                 <ListItemText
                   primary={item.label}
-                  primaryTypographyProps={{ sx: { fontWeight: 600 } }}
+                  slotProps={{ primary: { sx: { fontWeight: 600 } } }}
                 />
               </ListItemButton>
             </ListItem>

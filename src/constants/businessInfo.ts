@@ -22,6 +22,6 @@ export const BUSINESS = {
   },
   social: {
     facebook: 'https://www.facebook.com/badaxe.britty',
-    instagram: null as string | null, // TODO: add when available
+    instagram: null as string | null,
   },
 } as const
