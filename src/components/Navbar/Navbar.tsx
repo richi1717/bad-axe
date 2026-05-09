@@ -16,7 +16,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import CloseIcon from '@mui/icons-material/Close'
 import { useColorMode } from '../../theme/ColorModeProvider'
-import axesLogo from '../../assets/badAxeLogo.png'
+import axesLogo from '../../assets/badAxes.png'
 import type { NavItem } from '../../types'
 
 const navItems: NavItem[] = [
@@ -41,12 +41,11 @@ export default function Navbar() {
           >
             <Avatar
               sx={{
-                width: 40,
-                height: 40,
+                width: 48,
+                height: 48,
                 bgcolor: 'common.white',
                 border: '2px solid',
                 borderColor: mode === 'dark' ? 'transparent' : 'primary.main',
-                p: 0.5,
               }}
             >
               <Box
