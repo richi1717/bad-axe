@@ -92,6 +92,14 @@ const categoryIcon = (category: string) => {
 
 const ShopPage = () => {
   const [selected, setSelected] = useState<Product | null>(null)
+  const [dialogOpen, setDialogOpen] = useState(false)
+
+  const openDialog = (product: Product) => {
+    setSelected(product)
+    setDialogOpen(true)
+  }
+
+  const closeDialog = () => setDialogOpen(false)
 
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
@@ -130,7 +138,7 @@ const ShopPage = () => {
               >
                 <CardActionArea
                   disabled={!product.available}
-                  onClick={() => setSelected(product)}
+                  onClick={() => openDialog(product)}
                   sx={{ height: '100%', alignItems: 'flex-start' }}
                 >
                   <CardContent>
@@ -203,11 +211,17 @@ const ShopPage = () => {
         </Box>
       </Stack>
 
-      <Dialog open={!!selected} onClose={() => setSelected(null)} maxWidth="xs" fullWidth>
+      <Dialog
+        open={dialogOpen}
+        onClose={closeDialog}
+        maxWidth="xs"
+        fullWidth
+        slotProps={{ transition: { onExited: () => setSelected(null) } }}
+      >
         <DialogTitle>
           <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
             Interested in {selected?.name}?
-            <IconButton onClick={() => setSelected(null)} aria-label="close" size="small">
+            <IconButton onClick={closeDialog} aria-label="close" size="small">
               <CloseIcon fontSize="small" />
             </IconButton>
           </Stack>
@@ -222,7 +236,7 @@ const ShopPage = () => {
               variant="contained"
               startIcon={<PhoneIcon />}
               fullWidth
-              onClick={() => setSelected(null)}
+              onClick={closeDialog}
             >
               Call Us
             </Button>
@@ -231,7 +245,7 @@ const ShopPage = () => {
               variant="outlined"
               startIcon={<SmsIcon />}
               fullWidth
-              onClick={() => setSelected(null)}
+              onClick={closeDialog}
             >
               Send a Text
             </Button>
@@ -240,7 +254,7 @@ const ShopPage = () => {
               variant="outlined"
               startIcon={<EmailIcon />}
               fullWidth
-              onClick={() => setSelected(null)}
+              onClick={closeDialog}
             >
               Send an Email
             </Button>
