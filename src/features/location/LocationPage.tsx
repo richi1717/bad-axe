@@ -48,10 +48,21 @@ const LocationPage = () => (
         </Typography>
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
           <Button
-            href={BUSINESS.mapLinks.google}
+            href={BUSINESS.mapLinks.apple}
             target="_blank"
             rel="noopener noreferrer"
             variant="contained"
+            size="large"
+            startIcon={<AppleIcon />}
+            sx={{ flex: 1, maxWidth: { sm: 260 } }}
+          >
+            Open in Apple Maps
+          </Button>
+          <Button
+            href={BUSINESS.mapLinks.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outlined"
             size="large"
             startIcon={
               <Box
@@ -64,17 +75,6 @@ const LocationPage = () => (
             sx={{ flex: 1, maxWidth: { sm: 260 } }}
           >
             Open in Google Maps
-          </Button>
-          <Button
-            href={BUSINESS.mapLinks.apple}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="outlined"
-            size="large"
-            startIcon={<AppleIcon />}
-            sx={{ flex: 1, maxWidth: { sm: 260 } }}
-          >
-            Open in Apple Maps
           </Button>
         </Stack>
       </Stack>

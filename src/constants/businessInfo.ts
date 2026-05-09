@@ -22,7 +22,7 @@ export const BUSINESS = {
       'https://maps.apple.com/place?place-id=IF4693C9633C027B&address=County+Road+353%2C+Drury%2C+MO++65638%2C+United+States&coordinate=36.805157%2C-92.269330&name=Bad+Axe&_provider=9902',
   },
   social: {
-    facebook: 'https://www.facebook.com/badaxe.britty',
-    instagram: null as string | null,
+    facebook: 'https://www.facebook.com/people/Bad-Axe-Farmstead/61557382794537/',
+    instagram: 'https://www.instagram.com/badaxefarmstead/',
   },
 } as const

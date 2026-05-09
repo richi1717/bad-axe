@@ -33,7 +33,7 @@ const HomePage = () => (
         sx={{
           position: 'absolute',
           inset: 0,
-          bgcolor: 'rgba(0,0,0,0.45)',
+          bgcolor: 'rgba(0,0,0,0.2)',
         }}
       />
       <Stack
@@ -59,7 +59,7 @@ const HomePage = () => (
           sx={{
             fontFamily: 'Quattrocento, serif',
             fontSize: { xs: 28, sm: 40, md: 52 },
-            color: '#F0DEC0',
+            color: '#FFFFFF',
             letterSpacing: '0.08em',
             textShadow: '0 2px 8px rgba(0,0,0,0.5)',
           }}
@@ -70,7 +70,7 @@ const HomePage = () => (
           sx={{
             fontFamily: '"Montserrat Variable", sans-serif',
             fontSize: { xs: 14, sm: 18 },
-            color: '#D4C4A0',
+            color: '#FFFFFF',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
             mt: 1,
@@ -108,7 +108,7 @@ const HomePage = () => (
       <Stack direction="column" spacing={3} sx={{ alignItems: 'center', textAlign: 'center' }}>
         <Typography
           variant="h3"
-          sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}
+          sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em', textTransform: 'uppercase' }}
         >
           Welcome to the Farm
         </Typography>
@@ -124,7 +124,7 @@ const HomePage = () => (
         <Button
           component={RouterLink}
           to="/contact"
-          variant="outlined"
+          variant="contained"
           color="primary"
           size="large"
           startIcon={<EmailIcon />}

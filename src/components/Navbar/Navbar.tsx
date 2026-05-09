@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link as RouterLink, NavLink } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
+import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
@@ -15,7 +16,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import CloseIcon from '@mui/icons-material/Close'
 import { useColorMode } from '../../theme/ColorModeProvider'
-import axesLogo from '../../assets/axes.svg'
+import axesLogo from '../../assets/badAxeLogo.png'
 import type { NavItem } from '../../types'
 
 const navItems: NavItem[] = [
@@ -38,12 +39,23 @@ export default function Navbar() {
             to="/"
             sx={{ display: 'flex', alignItems: 'center', mr: 2, flexShrink: 0 }}
           >
-            <Box
-              component="img"
-              src={axesLogo}
-              alt="Bad Axe Farmstead"
-              sx={{ height: 40 }}
-            />
+            <Avatar
+              sx={{
+                width: 40,
+                height: 40,
+                bgcolor: 'common.white',
+                border: '2px solid',
+                borderColor: mode === 'dark' ? 'transparent' : 'primary.main',
+                p: 0.5,
+              }}
+            >
+              <Box
+                component="img"
+                src={axesLogo}
+                alt="Bad Axe Farmstead"
+                sx={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            </Avatar>
           </Box>
 
           <Box
@@ -130,8 +142,8 @@ export default function Navbar() {
                 onClick={() => setDrawerOpen(false)}
                 sx={{
                   '&.active': {
-                    color: 'primary.main',
-                    bgcolor: 'action.selected',
+                    color: '#FFFFFF',
+                    bgcolor: 'primary.main',
                   },
                 }}
               >

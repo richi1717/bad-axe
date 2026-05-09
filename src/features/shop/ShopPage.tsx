@@ -14,81 +14,95 @@ import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import AgricultureIcon from '@mui/icons-material/Agriculture'
 import CloseIcon from '@mui/icons-material/Close'
-import EggIcon from '@mui/icons-material/Egg'
 import EmailIcon from '@mui/icons-material/Email'
-import GrassIcon from '@mui/icons-material/Grass'
-import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
-import PetsIcon from '@mui/icons-material/Pets'
 import PhoneIcon from '@mui/icons-material/Phone'
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
 import SmsIcon from '@mui/icons-material/Sms'
-import SoapIcon from '@mui/icons-material/Soap'
 import type { Product } from '../../types'
 import { BUSINESS } from '../../constants/businessInfo'
 
 const products: Product[] = [
   {
     id: 'eggs',
-    name: 'Fresh Farm Eggs',
-    description: 'Free-range eggs from our hens, collected fresh daily. Available by the dozen.',
+    name: 'Farm Fresh Eggs',
+    description:
+      'Our chickens are genuinely free-range and pasture-raised. Supplemental feed is certified organic, soy-free, and corn-free. Eggs are collected fresh daily — available by the dozen.',
     available: true,
     category: 'Eggs',
   },
   {
     id: 'milk',
-    name: 'Fresh Milk',
-    description: 'Farm fresh milk. Call ahead to check availability.',
+    name: 'Raw Milk',
+    description: 'Our milk is raw A2/A2, full cream. Our girls are mostly grass-fed but receive oats and alfalfa at milking time. All feed is certified organic — no corn, no soy. No vaccinations, no antibiotics. Available by order.',
     available: true,
     category: 'Dairy',
   },
   {
     id: 'beef',
-    name: 'Beef & Cattle',
-    description: 'We raise and sell cattle. Reach out to talk cuts, pricing, or buying a cow.',
+    name: 'Beef',
+    description:
+      'Our beef is primarily grass-fed. Any supplemental feed given is certified organic. Due to our small supply, beef is available on a first-come, first-served basis — please inquire for availability.',
     available: true,
-    category: 'Livestock',
+    category: 'Beef',
   },
   {
     id: 'chickens',
-    name: 'Chickens & Baby Chicks',
-    description: 'Live chickens and baby chicks available. Seasonal — call to check what we have.',
+    name: 'Poultry',
+    description:
+      'Live poultry (includes chicks, ducks, and guineas) and hatching eggs available. Availability varies by season — please inquire for current stock.',
     available: true,
-    category: 'Livestock',
+    category: 'Poultry',
   },
   {
     id: 'plant-starters',
-    name: 'Plant Starters',
-    description: 'Vegetable and garden starters grown on the farm. Availability changes with the season.',
+    name: 'Plant Starts',
+    description:
+      'Vegetable and garden starts, organically grown from organic/non-GMO seeds. Availability changes with the season.',
     available: true,
     category: 'Garden',
   },
   {
     id: 'soap',
     name: 'Handmade Soap',
-    description: 'Handcrafted soap made right here on the farm. New and growing — ask us what we have.',
-    available: true,
+    description:
+      'Locally crafted soap branded for Bad Axe Farmstead — coming soon.',
+    available: false,
     category: 'Goods',
+  },
+  {
+    id: 'event-space',
+    name: 'Event Space',
+    description:
+      'The Hall is a private room available for gatherings, receptions, and events. Indoor seating is around 60, with tables, chairs, a projector, and audio equipment provided. Additional outdoor space is available, including picnic tables, a firepit, and lawn games. Please inquire for availability and pricing.',
+    available: true,
+    category: 'Venue',
   },
   {
     id: 'merch',
     name: 'Bad Axe Merch',
-    description: "Branded gear is in the works. Check back soon or reach out if you're interested.",
+    description:
+      "Branded gear is in the works. Check back soon or reach out if you're interested.",
     available: false,
     category: 'Merch',
   },
 ]
 
-const categoryIcon = (category: string) => {
-  if (category === 'Eggs') return <EggIcon />
-  if (category === 'Dairy') return <LocalDrinkIcon />
-  if (category === 'Livestock') return <AgricultureIcon />
-  if (category === 'Garden') return <GrassIcon />
-  if (category === 'Goods') return <SoapIcon />
-  if (category === 'Merch') return <ShoppingBagIcon />
-  return <PetsIcon />
+const categoryEmoji: Record<string, string> = {
+  Eggs: '🥚',
+  Dairy: '🥛',
+  Beef: '🥩',
+  Poultry: '🐔',
+  Garden: '🌱',
+  Goods: '🧼',
+  Venue: '🎉',
+  Merch: '🛍️',
 }
+
+const categoryIcon = (category: string) => (
+  <Box component="span" sx={{ fontSize: '1.5rem', lineHeight: 1 }}>
+    {categoryEmoji[category] ?? '🐾'}
+  </Box>
+)
 
 const ShopPage = () => {
   const [selected, setSelected] = useState<Product | null>(null)
@@ -107,14 +121,25 @@ const ShopPage = () => {
         <Stack
           direction="column"
           spacing={1.5}
-          sx={{ alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}
+          sx={{
+            alignItems: { xs: 'center', md: 'flex-start' },
+            textAlign: { xs: 'center', md: 'left' },
+          }}
         >
-          <Typography variant="h2" sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}>
+          <Typography
+            variant="h2"
+            sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}
+          >
             What We Have
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 560 }}>
-            We are a small working farm — inventory changes with the seasons and the weather.
-            Give us a call or send a message before making the trip to check current availability.
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ maxWidth: 560 }}
+          >
+            We are a small working farm — inventory changes with the seasons and
+            the weather. Give us a call or send a message before making the trip
+            to check current availability.
           </Typography>
           <Button
             href={BUSINESS.phoneHref}
@@ -127,7 +152,7 @@ const ShopPage = () => {
         </Stack>
 
         <Grid container spacing={3}>
-          {products.map((product) => (
+          {[...products].sort((a, b) => Number(b.available) - Number(a.available)).map((product) => (
             <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card
                 variant="outlined"
@@ -143,10 +168,20 @@ const ShopPage = () => {
                 >
                   <CardContent>
                     <Stack direction="column" spacing={2}>
-                      <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <Box sx={{ color: 'primary.main' }}>{categoryIcon(product.category)}</Box>
+                      <Stack
+                        direction="row"
+                        sx={{
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                        }}
+                      >
+                        <Box sx={{ color: 'primary.main' }}>
+                          {categoryIcon(product.category)}
+                        </Box>
                         <Chip
-                          label={product.available ? 'Available' : 'Coming Soon'}
+                          label={
+                            product.available ? 'Available' : 'Coming Soon'
+                          }
                           size="small"
                           color={product.available ? 'success' : 'default'}
                           variant="outlined"
@@ -155,7 +190,11 @@ const ShopPage = () => {
                       <Typography variant="h6" sx={{ fontWeight: 700 }}>
                         {product.name}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ lineHeight: 1.7 }}
+                      >
                         {product.description}
                       </Typography>
                     </Stack>
@@ -177,20 +216,32 @@ const ShopPage = () => {
           <Stack direction="column" spacing={2} sx={{ alignItems: 'center' }}>
             <Typography
               variant="h5"
-              sx={{ color: '#fff', fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}
+              sx={{
+                color: '#fff',
+                fontFamily: 'Norwester, serif',
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+              }}
             >
               Want to order or check what is ready?
             </Typography>
-            <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.85)', maxWidth: 500 }}>
-              We love hearing from folks who want to buy local. Call us or send a message and
-              we will get back to you.
+            <Typography
+              variant="body2"
+              sx={{ color: 'rgba(255,255,255,0.85)', maxWidth: 500 }}
+            >
+              We love hearing from folks who want to buy local. Call us or send
+              a message and we will get back to you.
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
               <Button
                 href={BUSINESS.phoneHref}
                 variant="contained"
                 startIcon={<PhoneIcon />}
-                sx={{ bgcolor: '#fff', color: 'primary.dark', '&:hover': { bgcolor: '#f0e8d8' } }}
+                sx={{
+                  bgcolor: '#fff',
+                  color: 'primary.dark',
+                  '&:hover': { bgcolor: '#f0e8d8' },
+                }}
               >
                 {BUSINESS.phone}
               </Button>
@@ -201,7 +252,10 @@ const ShopPage = () => {
                 sx={{
                   borderColor: '#fff',
                   color: '#fff',
-                  '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.15)' },
+                  '&:hover': {
+                    borderColor: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.15)',
+                  },
                 }}
               >
                 Send a Message
@@ -219,7 +273,10 @@ const ShopPage = () => {
         slotProps={{ transition: { onExited: () => setSelected(null) } }}
       >
         <DialogTitle>
-          <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <Stack
+            direction="row"
+            sx={{ justifyContent: 'space-between', alignItems: 'center' }}
+          >
             Interested in {selected?.name}?
             <IconButton onClick={closeDialog} aria-label="close" size="small">
               <CloseIcon fontSize="small" />
@@ -229,20 +286,12 @@ const ShopPage = () => {
         <DialogContent>
           <Stack direction="column" spacing={2} sx={{ pt: 1 }}>
             <Typography variant="body2" color="text.secondary">
-              Give us a call, send a text, or shoot us an email — we'll get back to you.
+              Give us a call, send a text, or shoot us an email — we'll get back
+              to you.
             </Typography>
             <Button
-              href={BUSINESS.phoneHref}
-              variant="contained"
-              startIcon={<PhoneIcon />}
-              fullWidth
-              onClick={closeDialog}
-            >
-              Call Us
-            </Button>
-            <Button
               href={`sms:${BUSINESS.phoneHref.replace('tel:', '')}?body=Hi, I'm interested in ${selected?.name}.`}
-              variant="outlined"
+              variant="contained"
               startIcon={<SmsIcon />}
               fullWidth
               onClick={closeDialog}
@@ -250,8 +299,19 @@ const ShopPage = () => {
               Send a Text
             </Button>
             <Button
+              href={BUSINESS.phoneHref}
+              variant="contained"
+              color="secondary"
+              startIcon={<PhoneIcon />}
+              fullWidth
+              onClick={closeDialog}
+            >
+              Call Us
+            </Button>
+            <Button
               href={`mailto:${BUSINESS.email}?subject=Inquiry: ${selected?.name}&body=Hi, I'm interested in ${selected?.name}.`}
-              variant="outlined"
+              variant="contained"
+              color="secondary"
               startIcon={<EmailIcon />}
               fullWidth
               onClick={closeDialog}

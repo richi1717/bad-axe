@@ -12,26 +12,26 @@ export function getThemeOptions(mode: ColorMode): ThemeOptions {
     palette: {
       mode,
       primary: {
-        main: '#C4732A',
-        light: '#D9945A',
-        dark: '#8F5120',
+        main: '#5C6B52',
+        light: '#7A8C6E',
+        dark: '#3A4A34',
         contrastText: '#FFFFFF',
       },
       secondary: {
-        main: '#5B8C4A',
-        light: '#7AAD67',
-        dark: '#3D6132',
+        main: '#8A8E84',
+        light: '#A8ACA4',
+        dark: '#5E6258',
         contrastText: '#FFFFFF',
       },
       background: {
-        default: isDark ? '#0F0C08' : '#F5F0E8',
-        paper: isDark ? '#1C1710' : '#FFFFFF',
+        default: isDark ? '#2A2D2B' : '#F0EEE8',
+        paper: isDark ? '#343836' : '#FFFFFF',
       },
       text: {
-        primary: isDark ? '#F0E6D3' : '#1A1208',
-        secondary: isDark ? '#B8A88A' : '#5A4A35',
+        primary: isDark ? '#C8CEC8' : '#2A2D2B',
+        secondary: isDark ? '#8A8E84' : '#5C6358',
       },
-      divider: isDark ? '#3A2E20' : '#D4C4A8',
+      divider: isDark ? '#3E4440' : '#D8D8D0',
     },
     typography: {
       fontFamily: FONT_BODY,
@@ -42,10 +42,12 @@ export function getThemeOptions(mode: ColorMode): ThemeOptions {
       h2: {
         fontFamily: FONT_DISPLAY,
         letterSpacing: '0.04em',
+        textTransform: 'uppercase',
       },
       h3: {
         fontFamily: FONT_SERIF,
         letterSpacing: '0.02em',
+        textTransform: 'uppercase',
       },
       h4: {
         fontFamily: FONT_SERIF,
@@ -53,10 +55,12 @@ export function getThemeOptions(mode: ColorMode): ThemeOptions {
       h5: {
         fontFamily: FONT_BODY,
         fontWeight: 600,
+        textTransform: 'uppercase',
       },
       h6: {
         fontFamily: FONT_BODY,
         fontWeight: 600,
+        textTransform: 'uppercase',
       },
     },
     shape: {

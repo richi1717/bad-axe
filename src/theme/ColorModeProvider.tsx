@@ -18,7 +18,7 @@ export const useColorMode = () => useContext(ColorModeContext)
 export default function ColorModeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<ColorMode>(() => {
     const saved = localStorage.getItem('colorMode')
-    return (saved as ColorMode) || 'dark'
+    return (saved as ColorMode) || 'light'
   })
 
   const toggleColorMode = () => {

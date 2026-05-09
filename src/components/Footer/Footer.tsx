@@ -31,7 +31,7 @@ const Footer = () => (
         <Stack spacing={0.5}>
           <Typography
             variant="h6"
-            sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.05em' }}
+            sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}
           >
             {BUSINESS.name}
           </Typography>
