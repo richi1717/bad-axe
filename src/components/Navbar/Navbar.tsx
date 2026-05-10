@@ -22,7 +22,8 @@ import type { NavItem } from '../../types'
 const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Shop', path: '/shop' },
-  { label: 'Find Us', path: '/location' },
+  { label: 'Our Practices', path: '/practices' },
+  { label: 'Visit Us', path: '/location' },
   { label: 'Contact', path: '/contact' },
 ]
 

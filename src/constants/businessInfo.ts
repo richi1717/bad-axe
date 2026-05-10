@@ -13,7 +13,7 @@ export const BUSINESS = {
   email: 'britty.jeffery@thebadaxe.com',
   hours: {
     display: '8:00 AM – 5:00 PM',
-    days: 'Daily',
+    days: 'Monday – Friday',
     note: "It's a farm — we're usually around. Give us a call before making a trip.",
   },
   mapLinks: {

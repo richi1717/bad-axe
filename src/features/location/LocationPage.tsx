@@ -2,14 +2,12 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Divider from '@mui/material/Divider'
-import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import AppleIcon from '@mui/icons-material/Apple'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import PhoneIcon from '@mui/icons-material/Phone'
-import WarningAmberIcon from '@mui/icons-material/WarningAmber'
 import { BUSINESS } from '../../constants/businessInfo'
 
 const LocationPage = () => (
@@ -17,30 +15,15 @@ const LocationPage = () => (
     <Stack direction="column" spacing={5}>
       <Stack direction="column" spacing={1}>
         <Typography variant="h2" sx={{ fontFamily: 'Norwester, serif', letterSpacing: '0.04em' }}>
-          Find Us
+          Visit Us
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          Because we value knowing where our food comes from and how it is raised, we encourage others to do the same. We are happy to have visitors to our farm anytime — just give us a heads up and we would be happy to meet you and show you around.
         </Typography>
         <Typography variant="body1" color="text.secondary">
           We're tucked away in the Ozarks — here's everything you need to get here.
         </Typography>
       </Stack>
-
-      <Paper
-        variant="outlined"
-        sx={{ p: 3, borderColor: 'warning.main', bgcolor: 'warning.main', opacity: 0.9, borderRadius: 2 }}
-      >
-        <Stack direction="row" spacing={2} sx={{ alignItems: 'flex-start' }}>
-          <WarningAmberIcon sx={{ color: 'warning.contrastText', mt: 0.25, flexShrink: 0 }} />
-          <Stack direction="column" spacing={0.5}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'warning.contrastText' }}>
-              Heads up — GPS may not find our address
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'warning.contrastText' }}>
-              Rural route addresses can confuse navigation apps. Use the map links below
-              for accurate directions, and give us a call if you get turned around.
-            </Typography>
-          </Stack>
-        </Stack>
-      </Paper>
 
       <Stack direction="column" spacing={2}>
         <Typography variant="h5" sx={{ fontWeight: 600 }}>
@@ -112,10 +95,10 @@ const LocationPage = () => (
         <Stack direction="column" spacing={1.5} sx={{ flex: 1 }}>
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             <PhoneIcon color="primary" />
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>Lost?</Typography>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>Need Help?</Typography>
           </Stack>
           <Typography variant="body2" color="text.secondary">
-            Give us a call and we'll talk you in.
+            Give us a call — we'd be happy to help with directions.
           </Typography>
           <Button
             href={BUSINESS.phoneHref}

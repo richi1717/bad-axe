@@ -15,6 +15,7 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import { useForm } from '@tanstack/react-form'
 import { z } from 'zod'
 import { BUSINESS } from '../../constants/businessInfo'
+import ContactDialog from '../../components/ContactDialog/ContactDialog'
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -27,6 +28,7 @@ const FORMSPREE_URL = 'https://formspree.io/f/mrejykdl'
 const ContactPage = () => {
   const [successOpen, setSuccessOpen] = useState(false)
   const [errorOpen, setErrorOpen] = useState(false)
+  const [contactOpen, setContactOpen] = useState(false)
 
   const form = useForm({
     defaultValues: { name: '', email: '', message: '' },
@@ -67,9 +69,10 @@ const ContactPage = () => {
                 Phone
               </Typography>
               <Link
-                href={BUSINESS.phoneHref}
+                component="button"
+                onClick={() => setContactOpen(true)}
                 underline="hover"
-                sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}
+                sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary', background: 'none', border: 'none', cursor: 'pointer', p: 0 }}
               >
                 <PhoneIcon fontSize="small" color="primary" />
                 <Typography variant="body1" sx={{ fontWeight: 500 }}>{BUSINESS.phone}</Typography>
@@ -186,6 +189,8 @@ const ContactPage = () => {
           </Paper>
         </Stack>
       </Stack>
+
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
 
       <Snackbar
         open={successOpen}
