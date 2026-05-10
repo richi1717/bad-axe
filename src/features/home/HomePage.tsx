@@ -10,7 +10,7 @@ import EmailIcon from '@mui/icons-material/Email'
 import '@fontsource/norwester'
 import '@fontsource/quattrocento'
 import '@fontsource-variable/montserrat'
-import backgroundSvg from '../../assets/background.svg'
+import backgroundSvg from '../../assets/background.jpg'
 import { BUSINESS } from '../../constants/businessInfo'
 
 const HomePage = () => (
